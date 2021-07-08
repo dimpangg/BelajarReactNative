@@ -4,7 +4,9 @@ import {Text, View, StatusBar, Image, TouchableOpacity} from 'react-native';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      header: 'Home',
+    };
   }
   render() {
     return (
@@ -18,8 +20,8 @@ class App extends Component {
             alignItems: 'center',
             elevation: 8,
           }}>
-          <Text style={{color: 'white', fontWeight: 'bold', fontSize: 16}}>
-            Header
+          <Text style={{color: 'white', fontWeight: 'bold', fontSize: 20}}>
+            {this.state.header}
           </Text>
         </View>
 
