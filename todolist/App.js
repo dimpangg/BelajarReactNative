@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, View, StatusBar} from 'react-native';
+import {Text, View, StatusBar, Image} from 'react-native';
 
 class App extends Component {
   constructor(props) {
@@ -21,6 +21,23 @@ class App extends Component {
           <Text style={{color: 'white', fontWeight: 'bold', fontSize: 16}}>
             Header
           </Text>
+        </View>
+
+        <View
+          style={{
+            justifyContent: 'center',
+            alignItems: 'center',
+            marginVertical: 16,
+          }}>
+          <Image
+            source={require('./src/images/img-1.png')}
+            style={{
+              width: 300,
+              height: 300,
+              borderWidth: 2,
+              borderColor: '#eee',
+            }}
+          />
         </View>
       </View>
     );
