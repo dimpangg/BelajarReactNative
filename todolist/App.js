@@ -8,36 +8,18 @@ class App extends Component {
   }
   render() {
     return (
-      <View>
-        <Text
-          style={{
-            fontWeight: 'bold',
-            fontSize: 20,
-            textAlign: 'center',
-            // textDecorationLine: 'underline line-through',
-            letterSpacing: 5,
-          }}>
-          <Text style={{color: 'red'}}>Hello </Text>
-          <Text style={{color: 'blue'}}>World!</Text>
-        </Text>
-
+      <View style={{flex: 1}}>
         <View
           style={{
-            // width: 50,
-            // height: 50,
-            flex: 1,
-            flexDirection: 'row',
-            backgroundColor: 'lightblue',
-            marginVertical: 16,
-            marginHorizontal: 8,
-            // padding: 8,
+            backgroundColor: 'red',
+            paddingVertical: 16,
             justifyContent: 'center',
             alignItems: 'center',
+            elevation: 8,
           }}>
-          <Text>Halo</Text>
-          <Text>Halo</Text>
-          <Text>Halo</Text>
-          <Text>Halo</Text>
+          <Text style={{color: 'white', fontWeight: 'bold', fontSize: 16}}>
+            Header
+          </Text>
         </View>
       </View>
     );
