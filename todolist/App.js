@@ -1,11 +1,19 @@
 import React, {Component} from 'react';
-import {Text, View, StatusBar, Image, TouchableOpacity} from 'react-native';
+import {
+  Text,
+  View,
+  StatusBar,
+  Image,
+  TouchableOpacity,
+  Switch,
+} from 'react-native';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       header: 'Home',
+      value: 'true',
     };
   }
   render() {
@@ -45,6 +53,11 @@ class App extends Component {
             resizeMode="cover"
           />
         </TouchableOpacity>
+
+        <Switch
+          value={this.state.value}
+          onValueChange={() => this.setState({value: !this.state.value})}
+        />
 
         <TouchableOpacity
           style={{
