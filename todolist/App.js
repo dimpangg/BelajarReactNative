@@ -20,6 +20,25 @@ class App extends Component {
           <Text style={{color: 'red'}}>Hello </Text>
           <Text style={{color: 'blue'}}>World!</Text>
         </Text>
+
+        <View
+          style={{
+            // width: 50,
+            // height: 50,
+            flex: 1,
+            flexDirection: 'row',
+            backgroundColor: 'lightblue',
+            marginVertical: 16,
+            marginHorizontal: 8,
+            // padding: 8,
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+          <Text>Halo</Text>
+          <Text>Halo</Text>
+          <Text>Halo</Text>
+          <Text>Halo</Text>
+        </View>
       </View>
     );
   }
