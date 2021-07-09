@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, TouchableOpacity} from 'react-native';
 
 class Detail extends Component {
   constructor(props) {
@@ -10,6 +10,9 @@ class Detail extends Component {
     return (
       <View>
         <Text>Detail</Text>
+        <TouchableOpacity onPress={() => this.props.navigation.pop()}>
+          <Text>Back</Text>
+        </TouchableOpacity>
       </View>
     );
   }
