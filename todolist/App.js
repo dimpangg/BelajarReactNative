@@ -12,6 +12,7 @@ import {
   Button,
   FlatList,
   Alert,
+  ToastAndroid,
 } from 'react-native';
 
 class App extends Component {
@@ -114,10 +115,24 @@ class App extends Component {
           style={{flex: 1}}
           data={this.state.dataPembayaran}
           renderItem={({item, index}) => (
-            <View>
-              <Text>{item.namaBarang}</Text>
+            <TouchableOpacity
+              style={styles.list}
+              onPress={() =>
+                ToastAndroid.show(
+                  `Anda mengklik ${item.namaBarang}`,
+                  ToastAndroid.SHORT,
+                )
+              }>
+              <Text
+                style={{
+                  fontSize: 18,
+                  fontWeight: 'bold',
+                  textTransform: 'capitalize',
+                }}>
+                {item.namaBarang}
+              </Text>
               <Text>{item.harga}</Text>
-            </View>
+            </TouchableOpacity>
           )}
           keyExtractor={(item) => item.id}
         />
@@ -151,6 +166,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginVertical: 16,
+  },
+  list: {
+    backgroundColor: '#fd1',
+    padding: 16,
+    marginBottom: 8,
+    marginHorizontal: 8,
+    borderRadius: 8,
   },
 });
 
