@@ -10,7 +10,7 @@ class Detail extends Component {
     return (
       <View>
         <Text>Detail</Text>
-        <TouchableOpacity onPress={() => this.props.navigation.pop()}>
+        <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
           <Text>Back</Text>
         </TouchableOpacity>
       </View>
