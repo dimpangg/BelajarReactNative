@@ -19,6 +19,7 @@ import {
   Dimensions,
   Linking,
   RefreshControl,
+  ImageBackground,
 } from 'react-native';
 
 const width = Dimensions.get('window').width;
@@ -124,7 +125,7 @@ class App extends Component {
 
         <ActivityIndicator size="small" color="#f5f" />
 
-        <TouchableOpacity
+        {/* <TouchableOpacity
           style={styles.imgContainer}
           onPress={() => Linking.openURL('https://google.com')}>
           <Image
@@ -139,7 +140,7 @@ class App extends Component {
             }}
             resizeMode="cover"
           />
-        </TouchableOpacity>
+        </TouchableOpacity> */}
 
         {/* <View
           style={{
@@ -178,8 +179,21 @@ class App extends Component {
           <Text style={styles.btnTxt}>Click</Text>
         </TouchableOpacity> */}
 
+        <ImageBackground
+          source={{
+            uri: 'https://images.unsplash.com/photo-1565574337622-c456ba77d4b2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=968&q=80',
+          }}
+          style={{
+            flex: 1,
+            resizeMode: 'cover',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+          <Text style={{color: '#fff'}}>Hello WOrld!</Text>
+        </ImageBackground>
+
         <FlatList
-          style={{flex: 1}}
+          style={{flex: 1, marginTop: 20}}
           data={this.state.dataPembayaran}
           refreshControl={
             <RefreshControl
