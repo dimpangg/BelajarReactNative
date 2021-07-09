@@ -15,7 +15,12 @@ import {
   ToastAndroid,
   BackHandler,
   PermissionsAndroid,
+  ActivityIndicator,
+  Dimensions,
 } from 'react-native';
+
+const width = Dimensions.get('window').width;
+const height = Dimensions.get('window').height;
 
 class App extends Component {
   constructor(props) {
@@ -114,6 +119,8 @@ class App extends Component {
           </Text>
         </View>
 
+        <ActivityIndicator size="small" color="#f5f" />
+
         <TouchableOpacity
           style={styles.imgContainer}
           onPress={() => this.requestCameraPermission}>
@@ -122,7 +129,7 @@ class App extends Component {
               uri: 'https://images.unsplash.com/photo-1565574337622-c456ba77d4b2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=968&q=80',
             }}
             style={{
-              width: 300,
+              width: width,
               height: 300,
               borderWidth: 2,
               borderColor: 'pink',
