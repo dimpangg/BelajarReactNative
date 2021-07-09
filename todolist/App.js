@@ -11,6 +11,7 @@ import {
   StyleSheet,
   Button,
   FlatList,
+  Alert,
 } from 'react-native';
 
 class App extends Component {
@@ -52,7 +53,12 @@ class App extends Component {
 
         <TouchableOpacity
           style={styles.imgContainer}
-          onPress={() => console.log('halo')}>
+          onPress={() =>
+            Alert.alert('penting', 'ini gambar', [
+              {text: 'Cancel', onPress: () => console.log('cancel ditekan')},
+              {text: 'Ok', onPress: () => console.log('Ok ditekan')},
+            ])
+          }>
           <Image
             source={{
               uri: 'https://images.unsplash.com/photo-1565574337622-c456ba77d4b2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=968&q=80',
