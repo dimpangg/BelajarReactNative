@@ -10,6 +10,7 @@ import {
   ScrollView,
   StyleSheet,
   Button,
+  FlatList,
 } from 'react-native';
 
 class App extends Component {
@@ -19,11 +20,12 @@ class App extends Component {
       header: 'Home',
       value: 'true',
       username: '',
+      data: [1, 2, 3, 4, 5, 6, 7, 1, 2, 3, 4, 5, 6, 7, 1, 2, 3, 4, 5, 6, 7],
     };
   }
   render() {
     return (
-      <ScrollView style={{flex: 1}}>
+      <View style={{flex: 1}}>
         <StatusBar barStyle="default" backgroundColor="#2196f3" />
         <View style={styles.header}>
           <Text style={{color: 'white', fontWeight: 'bold', fontSize: 20}}>
@@ -48,7 +50,7 @@ class App extends Component {
           />
         </TouchableOpacity>
 
-        <View
+        {/* <View
           style={{
             justifyContent: 'center',
             alignItems: 'center',
@@ -83,8 +85,15 @@ class App extends Component {
         </TouchableOpacity>
         <TouchableOpacity style={styles.button}>
           <Text style={styles.btnTxt}>Click</Text>
-        </TouchableOpacity>
-      </ScrollView>
+        </TouchableOpacity> */}
+
+        <FlatList
+          style={{flex: 1}}
+          data={this.state.data}
+          renderItem={({item, index}) => <Text>{item}</Text>}
+          keyExtractor={(item) => item.toString}
+        />
+      </View>
     );
   }
 }
