@@ -13,6 +13,8 @@ import {
   FlatList,
   Alert,
   ToastAndroid,
+  BackHandler,
+  PermissionsAndroid,
 } from 'react-native';
 
 class App extends Component {
@@ -39,9 +41,69 @@ class App extends Component {
           namaBarang: 'wortel',
           harga: 20000,
         },
+        {
+          id: 4,
+          namaBarang: 'alpukat',
+          harga: 20000,
+        },
+        {
+          id: 5,
+          namaBarang: 'nanas',
+          harga: 20000,
+        },
       ],
     };
   }
+
+  backAction = () => {
+    Alert.alert('Perhatian!', 'Apakah anda yakin ingin menutup aplikasi?', [
+      {
+        text: 'Cancel',
+        onPress: () => null,
+        style: 'cancel',
+      },
+      {
+        text: 'Yes',
+        onPress: () => BackHandler.exitApp(),
+      },
+    ]);
+    return true;
+  };
+
+  componentDidMount() {
+    this.backHandler = BackHandler.addEventListener(
+      'hardwareBackPress',
+      this.backAction,
+    );
+  }
+
+  componentWillUnmount() {
+    this.backHandler.remove();
+  }
+
+  requestCameraPermission = async () => {
+    try {
+      const granted = await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.CAMERA,
+        {
+          title: 'Ijinkan Akses',
+          message: 'Ijinkan Aplikasi Mengakses Kamera?',
+          buttonNeutral: 'Nanti',
+          buttonPositive: 'Oke',
+          buttonNegative: 'Batal',
+        },
+      );
+
+      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+        console.log('Permission diberikan');
+      } else {
+        console.log('Permission tidak diberikan');
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   render() {
     return (
       <View style={{flex: 1}}>
@@ -54,12 +116,7 @@ class App extends Component {
 
         <TouchableOpacity
           style={styles.imgContainer}
-          onPress={() =>
-            Alert.alert('penting', 'ini gambar', [
-              {text: 'Cancel', onPress: () => console.log('cancel ditekan')},
-              {text: 'Ok', onPress: () => console.log('Ok ditekan')},
-            ])
-          }>
+          onPress={() => this.requestCameraPermission}>
           <Image
             source={{
               uri: 'https://images.unsplash.com/photo-1565574337622-c456ba77d4b2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=968&q=80',
