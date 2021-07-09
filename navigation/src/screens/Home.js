@@ -11,7 +11,11 @@ class Home extends Component {
       <View>
         <Text>Home</Text>
         <TouchableOpacity
-          onPress={() => this.props.navigation.navigate('Detail')}>
+          onPress={() =>
+            this.props.navigation.navigate('Detail', {
+              umur: 18,
+            })
+          }>
           <Text>Move to Detail</Text>
         </TouchableOpacity>
       </View>

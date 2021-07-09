@@ -10,6 +10,7 @@ class Detail extends Component {
     return (
       <View>
         <Text>Detail</Text>
+        <Text>{this.props.route.params.umur}</Text>
         <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
           <Text>Back</Text>
         </TouchableOpacity>
