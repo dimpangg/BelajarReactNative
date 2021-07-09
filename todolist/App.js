@@ -9,6 +9,7 @@ import {
   TextInput,
   ScrollView,
   StyleSheet,
+  Button,
 } from 'react-native';
 
 class App extends Component {
@@ -61,8 +62,14 @@ class App extends Component {
 
         <TextInput
           value={this.state.username}
-          style={{borderBottomWidth: 1, marginHorizontal: 8}}
+          style={{borderBottomWidth: 1, margin: 8}}
           onChangeText={(value) => this.setState({username: value})}
+        />
+
+        <Button
+          title="Press Me"
+          color="blue"
+          onPress={() => console.log('button')}
         />
 
         <TouchableOpacity style={styles.button}>
