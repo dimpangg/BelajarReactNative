@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, TouchableOpacity} from 'react-native';
 
 class Home extends Component {
   constructor(props) {
@@ -10,6 +10,10 @@ class Home extends Component {
     return (
       <View>
         <Text>Home</Text>
+        <TouchableOpacity
+          onPress={() => this.props.navigation.navigate('Detail')}>
+          <Text>Move to Detail</Text>
+        </TouchableOpacity>
       </View>
     );
   }
