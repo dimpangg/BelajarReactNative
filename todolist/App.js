@@ -7,6 +7,8 @@ import {
   TouchableOpacity,
   Switch,
   TextInput,
+  ScrollView,
+  StyleSheet,
 } from 'react-native';
 
 class App extends Component {
@@ -20,27 +22,16 @@ class App extends Component {
   }
   render() {
     return (
-      <View style={{flex: 1}}>
+      <ScrollView style={{flex: 1}}>
         <StatusBar barStyle="default" backgroundColor="#2196f3" />
-        <View
-          style={{
-            backgroundColor: '#2196f3',
-            paddingVertical: 16,
-            justifyContent: 'center',
-            alignItems: 'center',
-            elevation: 8,
-          }}>
+        <View style={styles.header}>
           <Text style={{color: 'white', fontWeight: 'bold', fontSize: 20}}>
             {this.state.header}
           </Text>
         </View>
 
         <TouchableOpacity
-          style={{
-            justifyContent: 'center',
-            alignItems: 'center',
-            marginVertical: 16,
-          }}
+          style={styles.imgContainer}
           onPress={() => console.log('halo')}>
           <Image
             source={{
@@ -74,27 +65,49 @@ class App extends Component {
           onChangeText={(value) => this.setState({username: value})}
         />
 
-        <TouchableOpacity
-          style={{
-            backgroundColor: 'lightblue',
-            paddingVertical: 16,
-            margin: 8,
-            borderRadius: 10,
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}>
-          <Text
-            style={{
-              color: '#fff',
-              fontWeight: 'bold',
-              fontSize: 20,
-            }}>
-            Click
-          </Text>
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.btnTxt}>Click</Text>
         </TouchableOpacity>
-      </View>
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.btnTxt}>Click</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.btnTxt}>Click</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.btnTxt}>Click</Text>
+        </TouchableOpacity>
+      </ScrollView>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  button: {
+    backgroundColor: 'lightblue',
+    paddingVertical: 16,
+    margin: 8,
+    borderRadius: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  btnTxt: {
+    color: '#fff',
+    fontWeight: 'bold',
+    fontSize: 20,
+  },
+  header: {
+    backgroundColor: '#2196f3',
+    paddingVertical: 16,
+    justifyContent: 'center',
+    alignItems: 'center',
+    elevation: 8,
+  },
+  imgContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginVertical: 16,
+  },
+});
 
 export default App;
