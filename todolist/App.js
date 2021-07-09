@@ -21,6 +21,23 @@ class App extends Component {
       value: 'true',
       username: '',
       data: [1, 2, 3, 4, 5, 6, 7, 1, 2, 3, 4, 5, 6, 7, 1, 2, 3, 4, 5, 6, 7],
+      dataPembayaran: [
+        {
+          id: 1,
+          namaBarang: 'apel',
+          harga: 10000,
+        },
+        {
+          id: 2,
+          namaBarang: 'jeruk',
+          harga: 15000,
+        },
+        {
+          id: 3,
+          namaBarang: 'wortel',
+          harga: 20000,
+        },
+      ],
     };
   }
   render() {
@@ -89,9 +106,14 @@ class App extends Component {
 
         <FlatList
           style={{flex: 1}}
-          data={this.state.data}
-          renderItem={({item, index}) => <Text>{item}</Text>}
-          keyExtractor={(item) => item.toString}
+          data={this.state.dataPembayaran}
+          renderItem={({item, index}) => (
+            <View>
+              <Text>{item.namaBarang}</Text>
+              <Text>{item.harga}</Text>
+            </View>
+          )}
+          keyExtractor={(item) => item.id}
         />
       </View>
     );
