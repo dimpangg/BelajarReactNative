@@ -17,6 +17,8 @@ import {
   PermissionsAndroid,
   ActivityIndicator,
   Dimensions,
+  Linking,
+  RefreshControl,
 } from 'react-native';
 
 const width = Dimensions.get('window').width;
@@ -28,6 +30,7 @@ class App extends Component {
     this.state = {
       header: 'Home',
       value: 'true',
+      refresh: false,
       username: '',
       data: [1, 2, 3, 4, 5, 6, 7, 1, 2, 3, 4, 5, 6, 7, 1, 2, 3, 4, 5, 6, 7],
       dataPembayaran: [
@@ -123,7 +126,7 @@ class App extends Component {
 
         <TouchableOpacity
           style={styles.imgContainer}
-          onPress={() => this.requestCameraPermission}>
+          onPress={() => Linking.openURL('https://google.com')}>
           <Image
             source={{
               uri: 'https://images.unsplash.com/photo-1565574337622-c456ba77d4b2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=968&q=80',
@@ -178,6 +181,15 @@ class App extends Component {
         <FlatList
           style={{flex: 1}}
           data={this.state.dataPembayaran}
+          refreshControl={
+            <RefreshControl
+              refreshing={this.state.refresh}
+              onRefresh={() => {
+                console.log('refreshing');
+                this.setState({refresh: false});
+              }}
+            />
+          }
           renderItem={({item, index}) => (
             <TouchableOpacity
               style={styles.list}
