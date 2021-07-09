@@ -6,6 +6,7 @@ import {
   Image,
   TouchableOpacity,
   Switch,
+  TextInput,
 } from 'react-native';
 
 class App extends Component {
@@ -14,6 +15,7 @@ class App extends Component {
     this.state = {
       header: 'Home',
       value: 'true',
+      username: '',
     };
   }
   render() {
@@ -54,9 +56,22 @@ class App extends Component {
           />
         </TouchableOpacity>
 
-        <Switch
-          value={this.state.value}
-          onValueChange={() => this.setState({value: !this.state.value})}
+        <View
+          style={{
+            justifyContent: 'center',
+            alignItems: 'center',
+            marginVertical: 20,
+          }}>
+          <Switch
+            value={this.state.value}
+            onValueChange={() => this.setState({value: !this.state.value})}
+          />
+        </View>
+
+        <TextInput
+          value={this.state.username}
+          style={{borderBottomWidth: 1, marginHorizontal: 8}}
+          onChangeText={(value) => this.setState({username: value})}
         />
 
         <TouchableOpacity
